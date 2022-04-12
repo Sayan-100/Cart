@@ -15,6 +15,7 @@ class CartItem extends React.Component {
 
         // this.increaseQuantity = this.increaseQuantity.bind(this);
         //multiple getas it messier
+        // this.testing();
     }
     
     //method
@@ -24,28 +25,114 @@ class CartItem extends React.Component {
     //     console.log('this.state', this.state);
     // }
 
+
+    // testing (){
+    //   const promise = new Promise ((resolve, reject) => {
+    //     setTimeout(() => {
+    //       resolve('done');
+    //     }, 5000)
+    //   })
+
+    //   promise.then(() => {
+
+    //     // setState acts like a synchronous call
+    //     // this.setState({qty : 100});
+    //     this.setState({qty : this.state.qty + 10});
+    //     this.setState({qty : this.state.qty + 10});
+    //     this.setState({qty : this.state.qty + 10});
+    //     console.log('state', this.state);
+    //   });
+    // }
+
     increaseQuantity = () => {
         //this.state.qty += 1;
-        console.log('this', this.state);
+        // console.log('this', this.state);
         //setState 1
+
+        //Batch object form
+        // this.setState({
+        //   qty : this.state.qty + 1
+        // }, () => {
+
+        //});
+
         // this.setState({
         //   qty : this.state.qty + 1
         // });
 
+        // this.setState({
+        //   qty : this.state.qty + 5
+        // });//last call 
+
+        //calling it three times but it is changing by single
+        //Batching -- call is merged to single state call
+
+
         //setState 2
          
         //if previous state required use this
+        // this.setState((prevState) => {
+        //   return {
+        //     qty : prevState.qty + 1
+        //   }
+          
+        // });
+
+        //if previous state required use this
+        // this.setState((prevState) => {
+        //   return {
+        //     qty : prevState.qty + 1
+        //   }
+        // });
+        
+        // //if previous state required use this
+        // this.setState((prevState) => {
+        //   return {
+        //     qty : prevState.qty + 1
+        //   }
+        // });
+
+        // maintains a queue previous state updated
+        // callback 1
+        // callback 2
+        // callback 3
+
         this.setState((prevState) => {
           return {
             qty : prevState.qty + 1
           }
+        }, () => {
+          console.log('this.state', this.state);
         });
 
+        // console.log('this state', this.state);
+
+
+
+
+
+    }
+
+    decreaseQuantity = () => {
+      console.log('this', this.state);
+
+      const {qty} = this.state;
+      if(qty == 0)
+      {
+        return;
+      }
+
+      this.setState((prevState) => {
+        return {
+          qty : prevState.qty - 1
+        }
+      })
     }
 
     //arrow function will add the value to the instance of the CartItem
 
     render(){
+      console.log('render');
         const {price, title, qty} = this.state;
         return(
             <div className  = "cart-item">
@@ -72,7 +159,7 @@ class CartItem extends React.Component {
                       alt="decrease" 
                       className ="action-icons" 
                       src="https://cdn-icons-png.flaticon.com/512/992/992683.png"
-                      //onClick={this}
+                      onClick={this.decreaseQuantity}
                       />
                     <img 
                       alt="delete" 
