@@ -25,10 +25,25 @@ class CartItem extends React.Component {
     // }
 
     increaseQuantity = () => {
+        //this.state.qty += 1;
         console.log('this', this.state);
+        //setState 1
+        // this.setState({
+        //   qty : this.state.qty + 1
+        // });
+
+        //setState 2
+         
+        //if previous state required use this
+        this.setState((prevState) => {
+          return {
+            qty : prevState.qty + 1
+          }
+        });
+
     }
 
-    //arrow function will d the value to the instance of the CartItem
+    //arrow function will add the value to the instance of the CartItem
 
     render(){
         const {price, title, qty} = this.state;
@@ -50,14 +65,14 @@ class CartItem extends React.Component {
                       className ="action-icons" 
                       src="https://cdn-icons-png.flaticon.com/512/992/992651.png"
                       onClick = {this.increaseQuantity}
-                     //   onClick={this.increaseQuantity.bind(this)}
+                    //   onClick={this.increaseQuantity.bind(this)}
                     
                       />
                     <img 
                       alt="decrease" 
                       className ="action-icons" 
                       src="https://cdn-icons-png.flaticon.com/512/992/992683.png"
-                    //   onClick={this}
+                      //onClick={this}
                       />
                     <img 
                       alt="delete" 
