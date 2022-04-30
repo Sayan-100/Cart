@@ -3,21 +3,7 @@ import React from 'react';
 class CartItem extends React.Component {
 //CartItem will inherit some features from the Component class in React 
 //extend
-    
-    constructor (){
-        super(); // constructor of component class (parent)
-        this.state = {
-            price : 999,
-            title : 'Mobile Phone',
-            qty : 1,
-            img : ''
-        }
-
-        // this.increaseQuantity = this.increaseQuantity.bind(this);
-        //multiple getas it messier
-        // this.testing();
-    }
-    
+      
     //method
 
     // increaseQuantity()
@@ -133,9 +119,12 @@ class CartItem extends React.Component {
 
     render(){
       console.log('render');
-        const {price, title, qty} = this.state;
+      console.log('this props', this.props);
+        // const {price, title, qty} = this.state;
+        const {price, title, qty} = this.props.product;
         return(
             <div className  = "cart-item">
+              {this.props.jsx}
                 <div className = "left-block">
                     <img style = {stylse.image}/>
                 </div>
