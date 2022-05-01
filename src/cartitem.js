@@ -1,9 +1,10 @@
 import React from 'react';
 
-class CartItem extends React.Component {
+// class CartItem extends React.Component {
 //CartItem will inherit some features from the Component class in React 
 //extend
-      
+
+  const CartItem = (props) => {
     //method
 
     // increaseQuantity()
@@ -117,21 +118,28 @@ class CartItem extends React.Component {
 
     //arrow function will add the value to the instance of the CartItem
 
-    render(){
+    // render(){
       console.log('render');
-      console.log('this props', this.props);
+      console.log('this props', props);
+    
         // const {price, title, qty} = this.state;
-        const {price, title, qty} = this.props.product;
-        const {
-          product, 
-          onIncreaseQuantity, 
-          onDecreaseQuantity, 
-          onDeleteProduct} = this.props;
+        // const {price, title, qty} = this.props.product;
+        const {price, title, qty} = props.product;
+        // const {
+        //   product, 
+        //   onIncreaseQuantity, 
+        //   onDecreaseQuantity, 
+        //   onDeleteProduct} = this.props;
+          const {
+            product, 
+            onIncreaseQuantity, 
+            onDecreaseQuantity, 
+            onDeleteProduct} = props;
         return(
             <div className  = "cart-item">
-              {this.props.jsx}
+              {/* {this.props.jsx} */}
                 <div className = "left-block">
-                    <img style = {stylse.image}/>
+                    <img style = {stylse.image} src={product.img}/>
                 </div>
 
                 <div className = "right-block">
@@ -165,7 +173,7 @@ class CartItem extends React.Component {
                 </div>
             </div>
         ); 
-    }
+    // }
 }
 
 

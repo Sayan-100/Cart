@@ -1,89 +1,91 @@
 import React from 'react';
 import CartItem from './cartitem'
 
-class Cart extends React.Component {
+// class Cart extends React.Component {
+const Cart = (props) => {
 //CartItem will inherit some features from the Component class in React 
 //extend
-    constructor (){
-        super(); // constructor of component class (parent)
-        this.state = {
-          products: [
-              {
-                  price : 99,
-                  title : 'Watch',
-                  qty : 1,
-                  img : '',
-                  id : 1
-              },
+    // constructor (){
+    //     super(); // constructor of component class (parent)
+    //     this.state = {
+    //       products: [
+    //           {
+    //               price : 99,
+    //               title : 'Watch',
+    //               qty : 1,
+    //               img : '',
+    //               id : 1
+    //           },
 
-              {
-                  price : 999,
-                  title : 'Mobile Phone',
-                  qty : 10,
-                  img : '',
-                  id : 2
-              },
+    //           {
+    //               price : 999,
+    //               title : 'Mobile Phone',
+    //               qty : 10,
+    //               img : '',
+    //               id : 2
+    //           },
               
-              {
-                  price : 999,
-                  title : 'Laptop',
-                  qty : 4,
-                  img : '',
-                  id : 3
-              }
-          ]
-        }
+    //           {
+    //               price : 999,
+    //               title : 'Laptop',
+    //               qty : 4,
+    //               img : '',
+    //               id : 3
+    //           }
+    //       ]
+    //     }
 
-        // this.increaseQuantity = this.increaseQuantity.bind(this);
-        //multiple getas it messier
-        // this.testing();
-    }
+    //     // this.increaseQuantity = this.increaseQuantity.bind(this);
+    //     //multiple getas it messier
+    //     // this.testing();
+    // }
 
-    handleIncreaseQuantity = (product) => {
+    // handleIncreaseQuantity = (product) => {
 
-        console.log('Hey please increse the quantity of', product);
-        const {products}=this.state;
-        const index = products.indexOf(product);
+    //     console.log('Hey please increse the quantity of', product);
+    //     const {products}=this.state;
+    //     const index = products.indexOf(product);
 
-        products[index].qty = products[index].qty + 1;
+    //     products[index].qty = products[index].qty + 1;
 
-        this.setState({
-            products : products
-        })
-    }
+    //     this.setState({
+    //         products : products
+    //     })
+    // }
 
-    handleDecreaseQuantity = (product) => {
-        console.log('Hey please increse the quantity of', product);
-        const {products}=this.state;
-        const index = products.indexOf(product);
+    // handleDecreaseQuantity = (product) => {
+    //     console.log('Hey please increse the quantity of', product);
+    //     const {products}=this.state;
+    //     const index = products.indexOf(product);
 
-        if(products[index].qty === 0)
-        {
-            return;
-        }
+    //     if(products[index].qty === 0)
+    //     {
+    //         return;
+    //     }
 
-        products[index].qty = products[index].qty - 1;
+    //     products[index].qty = products[index].qty - 1;
 
 
-        this.setState({
-            products : products
-        })
-    }
+    //     this.setState({
+    //         products : products
+    //     })
+    // }
 
-    handleDeleteProduct = (id) => {
-        const {products} = this.state;
+    // handleDeleteProduct = (id) => {
+    //     const {products} = this.state;
         
-        const items = products.filter((item) => item.id !== id); //[{id not equall to argument id}]
+    //     const items = products.filter((item) => item.id !== id); //[{id not equall to argument id}]
 
-        this.setState({
-            products : items
-        })
-    }
+    //     this.setState({
+    //         products : items
+    //     })
+    // }
 
-    render()
-    {
+
         // const arr = [1, 2, 3, 4, 5];
-        const {products} = this.state;
+        // const {products} = this.state;
+        const {products} = props;
+
         return (
             <div className = "cart">
                 {/* {
@@ -100,9 +102,12 @@ class Cart extends React.Component {
                          <CartItem 
                            product={product} 
                            key ={product.id}
-                           onIncreaseQuantity={this.handleIncreaseQuantity}
-                           onDecreaseQuantity={this.handleDecreaseQuantity}
-                           onDeleteProduct={this.handleDeleteProduct}
+                        //    onIncreaseQuantity={this.handleIncreaseQuantity}
+                        //    onDecreaseQuantity={this.handleDecreaseQuantity}
+                        //    onDeleteProduct={this.handleDeleteProduct}
+                           onIncreaseQuantity={props.onIncreaseQuantity}
+                           onDecreaseQuantity={props.onDecreaseQuantity}
+                           onDeleteProduct={props.onDeleteProduct}
                          />
                         ) 
                     })
@@ -110,7 +115,7 @@ class Cart extends React.Component {
                
             </div>
         );
-    }
+    
 
 }
 
