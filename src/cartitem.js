@@ -11,8 +11,6 @@ import React from 'react';
     // {
     //     console.log('this.state', this.state);
     // }
-
-
     // testing (){
     //   const promise = new Promise ((resolve, reject) => {
     //     setTimeout(() => {
